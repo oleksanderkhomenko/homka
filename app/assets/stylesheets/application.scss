@@ -28,13 +28,23 @@ html, body {
 }
 
 .header {
-  flex: 0 0 auto;
-  background-color: #dcdcdc;
+  // flex: 0 0 auto;
 }
 
 .content {
-  flex: 1 1 auto;
-  position: relative;
+  // flex: 1 1 auto;
+  // position: relative;
   overflow-y: auto;
   height: 100%;
+}
+
+.container.log-in {
+  min-height: 256px;
+}
+
+.container.sign-up {
+  min-height: 514px;
+}
+.container.edit-profile {
+  min-height: 672px;
 }

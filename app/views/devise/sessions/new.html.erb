@@ -1,5 +1,5 @@
-<div class="container w-25">
-  <div class="h-100">
+<div class="container w-25 h-100 d-flex flex-column justify-content-center log-in">
+  <div class="form-wrapper">
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,6 +24,6 @@
         <%= f.submit "Log in", class: 'btn btn-primary' %>
       </div>
     <% end %>
+    <% if false %><%= render "devise/shared/links" %><% end %>
   </div>
-  <% if false %><%= render "devise/shared/links" %><% end %>
 </div>
