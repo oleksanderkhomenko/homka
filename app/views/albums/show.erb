@@ -4,3 +4,12 @@
 <div><%= @album.private %></div>
 <div><%= @album.user.full_name %></div>
 
+<%= link_to 'add photo', new_album_photo_path(@album) %>
+
+<% @photos.each do |photo| %>
+  <div>
+    <%= link_to photo.name, album_photo_path(photo) %>
+    <%= image_tag(photo.image_url.to_s) %>
+    <span><%= link_to 'x', album_photo_path(photo), method: :delete %> </span>
+  </div>
+<% end %>

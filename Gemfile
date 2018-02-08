@@ -37,6 +37,7 @@ gem 'devise'
 gem 'pg'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

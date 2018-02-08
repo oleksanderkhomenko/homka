@@ -1,0 +1,8 @@
+<%= link_to 'add photo', new_photo_path %>
+
+<% @photos.each do |photo| %>
+  <div>
+    <%= link_to photo.name, photo_path(photo) %>
+    <span><%= link_to 'x', photo_path(photo), method: :delete %> </span>
+  </div>
+<% end %>
