@@ -1,8 +1,9 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_album, only: %i[edit update show destroy]
 
   def index
-    @albums = Album.all
+    @albums = current_user.albums.order(:id)
   end
 
   def new
@@ -10,23 +11,37 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    @album = current_user.albums.new(album_params)
+    if @album.save
+      redirect_to @album
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    @album.update(album_params)
+    redirect_to @album
   end
 
   def show
   end
 
   def destroy
+    @album.destroy
+    redirect_to albums_path
   end
 
   private
 
   def album_params
-    params[:category].permit(:name, :description, :private)
+    params[:album].permit(:name, :description, :private)
+  end
+
+  def get_album
+    @album ||= current_user.albums.find(params[:id])
   end
 end

@@ -14,11 +14,9 @@
 
 @import "bootstrap";
 
-
 // header and scrolaable content
 html, body {
   height: 100%;
-  // margin: 0;
 }
 
 .main {
@@ -27,13 +25,7 @@ html, body {
   flex-direction: column;
 }
 
-.header {
-  // flex: 0 0 auto;
-}
-
 .content {
-  // flex: 1 1 auto;
-  // position: relative;
   overflow-y: auto;
   height: 100%;
 }

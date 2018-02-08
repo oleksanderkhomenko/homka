@@ -1,2 +1,9 @@
 <%= link_to 'create album', new_album_path %>
 
+<% @albums.each do |album| %>
+  <div>
+    <%= link_to album.name, album_path(album) %>
+    <span><%= link_to 'edit', edit_album_path(album) %> </span>
+    <span><%= link_to 'x', album_path(album), method: :delete %> </span>
+  </div>
+<% end %>

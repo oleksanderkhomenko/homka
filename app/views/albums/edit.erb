@@ -1,0 +1,26 @@
+<div class="container">
+  <%= form_with scope: :album, url: @album, method: :patch do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, autocomplete: "description", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Public' %>
+      <%= f.radio_button :private, :public_album %>
+      <%= f.label 'Private' %>
+      <%= f.radio_button :private, :private_album %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Update", class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>
+
+
