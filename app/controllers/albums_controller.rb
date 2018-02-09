@@ -28,7 +28,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @photos = Photo.all
+    @photos = @album.photos
   end
 
   def destroy

@@ -9,6 +9,9 @@
         <li class="nav-item">
           <%= link_to 'Albums', albums_path, class: "nav-link #{'active' if current_page?(albums_path)}"  %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Photos', photos_path, class: "nav-link #{'active' if current_page?(photos_path)}"  %>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Logges as <%= current_user.full_name %>

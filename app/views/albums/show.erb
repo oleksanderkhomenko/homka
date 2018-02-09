@@ -8,8 +8,7 @@
 
 <% @photos.each do |photo| %>
   <div>
-    <%= link_to photo.name, album_photo_path(photo) %>
-    <%= image_tag(photo.image_url.to_s) %>
-    <span><%= link_to 'x', album_photo_path(photo), method: :delete %> </span>
+    <%= link_to image_tag(photo.image_url(:thumb).to_s), album_photo_path(@album, photo) %>
+    <span><%= link_to 'x', album_photo_path(@album, photo), method: :delete %> </span>
   </div>
 <% end %>
