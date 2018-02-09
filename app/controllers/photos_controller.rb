@@ -24,6 +24,13 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo = current_user.photos.find(params[:id])
+    @photo.destroy
+    if params[:album_id].present?
+      redirect_to album_path(params[:album_id])
+    else
+      redirect_to photos_path
+    end
   end
 
   private
