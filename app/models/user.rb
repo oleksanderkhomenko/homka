@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_save :normalize_full_name
-  has_many :albums
-  has_many :photos
+  has_many :albums, dependent: :destroy
+  has_many :photos, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
