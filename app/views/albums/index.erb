@@ -1,8 +1,8 @@
 <div class="container h-100">
-  <%= link_to 'create album', new_album_path %>
-  
+  <%= link_to (fa_icon 'plus-circle', class: 'fa-5x text-success create-new-album'), new_album_path %>
 
-  <div class="albums row">
+
+  <div class="albums row pt-3">
     <% @albums.each do |album| %>
       <div class="album col-md-2">
         <div class="card mb-2 box-shadow align-items-center">
