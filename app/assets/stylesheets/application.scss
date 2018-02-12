@@ -13,6 +13,7 @@
  */
 
 @import "bootstrap";
+@import "font-awesome";
 
 // header and scrolaable content
 html, body {
@@ -29,3 +30,31 @@ html, body {
   overflow-y: auto;
   height: 100%;
 }
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(82, 130, 19, 0.48);
+}
+
+.album {
+  a {
+    word-break: break-all;
+    text-decoration: none;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  a:hover {
+    i {
+      color: #007bff !important;
+    }
+  }
+
+  div:hover {
+    box-shadow: 0 0.25rem 0.75rem rgba(19, 74, 130, 0.48);
+  }
+}
+

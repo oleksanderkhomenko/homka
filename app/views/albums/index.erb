@@ -1,9 +1,17 @@
-<%= link_to 'create album', new_album_path %>
+<div class="container h-100">
+  <%= link_to 'create album', new_album_path %>
+  
 
-<% @albums.each do |album| %>
-  <div>
-    <%= link_to album.name, album_path(album) %>
-    <span><%= link_to 'edit', edit_album_path(album) %> </span>
-    <span><%= link_to 'x', album_path(album), method: :delete %> </span>
+  <div class="albums row">
+    <% @albums.each do |album| %>
+      <div class="album col-md-2">
+        <div class="card mb-2 box-shadow align-items-center">
+          <a href="<%= album_path(album) %>" class="d-flex flex-column w-100 text-center">
+            <%= fa_icon 'folder-open', class: 'fa-5x text-success' %>
+            <span data-toggle="tooltip" data-placement="top" title="<%= album.name %>"><%= album.name %></span>
+          </a>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

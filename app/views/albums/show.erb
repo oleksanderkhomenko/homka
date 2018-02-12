@@ -1,3 +1,5 @@
+<span><%= link_to 'edit', edit_album_path(@album) %> </span>
+<span><%= link_to 'x', album_path(@album), method: :delete %> </span>
 <div><%= @album.id %></div>
 <div><%= @album.name %></div>
 <div><%= @album.description %></div>
