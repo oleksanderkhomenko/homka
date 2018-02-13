@@ -1,16 +1,23 @@
-<span><%= link_to 'edit', edit_album_path(@album) %> </span>
-<span><%= link_to 'x', album_path(@album), method: :delete %> </span>
-<div><%= @album.id %></div>
-<div><%= @album.name %></div>
-<div><%= @album.description %></div>
-<div><%= @album.private %></div>
-<div><%= @album.user.full_name %></div>
+<div class="container h-100">
+  <span><%= link_to 'edit', edit_album_path(@album) %> </span>
+  <span><%= link_to 'x', album_path(@album), method: :delete %> </span>
+  <div><%= @album.id %></div>
+  <div><%= @album.name %></div>
+  <div><%= @album.description %></div>
+  <div><%= @album.private %></div>
+  <div><%= @album.user.full_name %></div>
 
-<%= link_to 'add photo', new_album_photo_path(@album) %>
+  <%= link_to 'add photo', new_album_photo_path(@album) %>
 
-<% @photos.each do |photo| %>
-  <div>
-    <%= link_to image_tag(photo.image_url(:thumb).to_s), album_photo_path(@album, photo) %>
-    <span><%= link_to 'x', album_photo_path(@album, photo), method: :delete %> </span>
+  <div class="albums row pt-3">
+    <% @photos.each do |photo| %>
+      <div class="album col-md-2">
+        <div class="card mb-2 box-shadow align-items-center">
+          <%= link_to image_tag(photo.image_url(:thumb_150).to_s), album_photo_path(@album, photo) %>
+          <span><%= link_to (fa_icon 'trash', class: 'text-success'), album_photo_path(@album, photo), method: :delete %> </span>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
