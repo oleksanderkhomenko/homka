@@ -1,5 +1,5 @@
 <div>
   <p>Name: <span><%= photo.name ? photo.name : 'no name' %></span></p>
   <p>Description: <span><%= photo.description ? photo.description : 'no description' %></span></p>
-  <p><%= link_to 'edit', photo_path(photo), onclick: '$.fancybox.close( true );' %></p>
+  <p><%= link_to 'edit', album_photo_path(album, photo) %></p>
 </div>

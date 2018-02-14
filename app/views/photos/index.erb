@@ -3,7 +3,7 @@
     <% @photos.each do |photo| %>
       <div class="album col-md-2">
         <div class="card mb-2 box-shadow align-items-center">
-          <%= link_to image_tag(photo.image_url(:thumb_150).to_s, class: 'img-fluid'), photo.image_url.to_s, data: {fancybox: "gallery", caption: (render 'caption', photo: photo)} %>
+          <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: "gallery", caption: (render 'caption', photo: photo) } %>
           <span><%= link_to (fa_icon 'trash', class: 'text-success'), photo_path(photo), method: :delete %> </span>
         </div>
       </div>
