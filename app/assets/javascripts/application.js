@@ -16,3 +16,4 @@
 //= require_tree .
 //= require popper
 //= require bootstrap-sprockets
+//= fancybox
