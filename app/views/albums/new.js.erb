@@ -1,0 +1,6 @@
+// $(".container").append("<%= j(render 'new') %>")
+$('#exampleModal').modal();
+$('.modal-body').html("<%= j(render 'new') %>")
+$('#exampleModal').on('hidden.bs.modal', function () {
+  $('.modal-body').html("")
+})
