@@ -1,0 +1,5 @@
+$('#createAlbum').modal('hide')
+$('#createAlbum').on('hidden.bs.modal', function () {
+  $('.modal-body').html("")
+})
+$('.albums').append("<%= j(render 'album', album: @album) %>")

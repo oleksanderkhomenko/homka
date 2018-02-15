@@ -3,7 +3,6 @@ class AlbumsController < ApplicationController
   before_action :get_album, only: %i[edit update show destroy]
 
   def index
-    @albums = current_user.albums.order(:id)
   end
 
   def new
@@ -12,11 +11,11 @@ class AlbumsController < ApplicationController
 
   def create
     @album = current_user.albums.new(album_params)
-    if @album.save
-      redirect_to @album
-    else
-      render :new
-    end
+    @album.save
+    #   redirect_to @album
+    # else
+    #   render :new
+    # end
   end
 
   def edit
@@ -45,4 +44,9 @@ class AlbumsController < ApplicationController
   def get_album
     @album ||= current_user.albums.find(params[:id])
   end
+
+  def user_albums
+    current_user.albums.order(:id)
+  end
+  helper_method :user_albums
 end

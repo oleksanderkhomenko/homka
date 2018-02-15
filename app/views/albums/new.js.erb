@@ -1,6 +1,5 @@
-// $(".container").append("<%= j(render 'new') %>")
-$('#exampleModal').modal();
+$('#createAlbum').modal();
 $('.modal-body').html("<%= j(render 'new') %>")
-$('#exampleModal').on('hidden.bs.modal', function () {
+$('#createAlbum').on('hidden.bs.modal', function () {
   $('.modal-body').html("")
 })

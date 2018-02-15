@@ -1,0 +1,8 @@
+<div class="album col-md-2">
+  <div class="card mb-2 box-shadow align-items-center">
+    <a href="<%= album_path(album) %>" class="d-flex flex-column w-100 text-center">
+      <%= fa_icon 'folder-open', class: 'fa-5x text-success' %>
+      <span class="text-success" title="<%= album.name %>"><%= album.name %></span>
+    </a>
+  </div>
+</div>
