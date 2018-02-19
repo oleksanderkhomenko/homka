@@ -1,23 +1,50 @@
 <div class="container h-100">
-  <span><%= link_to 'edit', edit_album_path(@album) %> </span>
-  <span><%= link_to 'x', album_path(@album), method: :delete %> </span>
-  <div><%= @album.id %></div>
-  <div><%= @album.name %></div>
-  <div><%= @album.description %></div>
-  <div><%= @album.private %></div>
-  <div><%= @album.user.full_name %></div>
+  <%= link_to (fa_icon 'plus-circle', class: 'fa-5x text-success add-new-photos'), new_album_photo_path(@album), remote: true, data: { toogle: 'modal', target: '#AddPhotos'} %>
+  <div class="album-info d-flex justify-content-around align-items-center bg-secondary">
+    <span class="badge badge-info"><%= @album.name %></span>
+    <% if @album.description.present? %>
+      <span class="btn badge badge-info" data-toggle="collapse" href="#albumDescription" role="button" aria-expanded="false" aria-controls="albumDescription">Description</span>
+    <% end %>
+    <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: 'Public') : (fa_icon 'lock', class: 'text-danger fa-2x', title: 'Private') %></span>
+    <span><%= link_to (fa_icon 'edit', class: 'text-success fa-2x'), edit_album_path(@album) %></span>
+    <span><%= link_to (fa_icon 'trash', class: 'text-danger fa-2x'), album_path(@album), method: :delete %></span>
+  </div>
 
-  <%= link_to 'add photo', new_album_photo_path(@album) %>
+  <% if @album.description.present? %>
+    <div class="collapse multi-collapse" id="albumDescription">
+      <div class="card card-body">
+        <%= @album.description %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="albums row pt-3">
     <% @photos.each do |photo| %>
       <div class="album col-md-2">
         <div class="card mb-2 box-shadow align-items-center">
           <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: "gallery", caption: (render 'caption', photo: photo, album: @album) } %>
-          <span><%= link_to (fa_icon 'trash', class: 'text-success'), album_photo_path(@album, photo), method: :delete %> </span>
+          <span><%= link_to (fa_icon 'trash', class: 'text-danger'), album_photo_path(@album, photo), method: :delete %> </span>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
+<div class="modal fade" id="AddPhotos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add photos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary add-photos">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

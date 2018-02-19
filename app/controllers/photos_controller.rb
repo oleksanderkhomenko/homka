@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
       photo = Photo.new(image: image, user_id: current_user.id, album_id: album.id)
       photo.save
     end
-    redirect_to album
+    # redirect_to album
   end
 
   def show

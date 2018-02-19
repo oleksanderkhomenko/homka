@@ -1,0 +1,5 @@
+$('#AddPhotos').modal();
+$('.modal-body').html("<%= j(render 'new') %>")
+$('#AddPhotos').on('hidden.bs.modal', function () {
+  $('.modal-body').html("")
+})

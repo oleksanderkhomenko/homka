@@ -57,16 +57,26 @@ html, body {
   div:hover {
     box-shadow: 0 0.25rem 0.75rem rgba(19, 74, 130, 0.48);
   }
+
+  &:hover {
+    transform: scale(1.05);
+
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  transition: transform 0.3s ease-in-out;
 }
 
-.create-new-album {
+.create-new-album, .add-new-photos {
   position: absolute;
   bottom: 24px;
   right: 24px;
   z-index: 200;
 }
 
-.create-new-album:hover {
+.create-new-album:hover, .add-new-photos:hover {
   color: #007bff !important;
   -webkit-animation-name: rotate;
   -webkit-animation-duration: 1.5s;
@@ -82,4 +92,3 @@ html, body {
         -webkit-transform: rotate(360deg);
     }
 }
-
