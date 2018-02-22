@@ -2,7 +2,6 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @photos = current_user.photos
   end
 
   def new
@@ -11,12 +10,10 @@ class PhotosController < ApplicationController
   end
 
   def create
-    album = current_user.albums.find(params[:album_id])
-    photo_params[:image].each do |image|
-      photo = Photo.new(image: image, user_id: current_user.id, album_id: album.id)
-      photo.save
-    end
-    # redirect_to album
+    @album = current_user.albums.find(params[:album_id])
+    @photo = Photo.new(image: photo_params[:image], user_id: current_user.id, album_id: @album.id)
+    @photo.save
+    @photo.reload
   end
 
   def show
@@ -36,6 +33,11 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params[:photo].permit(:name, :description, image: [])
+    params[:photo].permit(:name, :description, :image)
   end
+
+  def user_photos
+    current_user.photos.order(:id)
+  end
+  helper_method :user_photos
 end

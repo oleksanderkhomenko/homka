@@ -5,7 +5,7 @@
     <% if @album.description.present? %>
       <span class="btn badge badge-info" data-toggle="collapse" href="#albumDescription" role="button" aria-expanded="false" aria-controls="albumDescription">Description</span>
     <% end %>
-    <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: 'Public') : (fa_icon 'lock', class: 'text-danger fa-2x', title: 'Private') %></span>
+    <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: 'Public Album') : (fa_icon 'lock', class: 'text-danger fa-2x', title: 'Private Album') %></span>
     <span><%= link_to (fa_icon 'edit', class: 'text-success fa-2x'), edit_album_path(@album) %></span>
     <span><%= link_to (fa_icon 'trash', class: 'text-danger fa-2x'), album_path(@album), method: :delete %></span>
   </div>
@@ -18,15 +18,8 @@
     </div>
   <% end %>
 
-  <div class="albums row pt-3">
-    <% @photos.each do |photo| %>
-      <div class="album col-md-2">
-        <div class="card mb-2 box-shadow align-items-center">
-          <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: "gallery", caption: (render 'caption', photo: photo, album: @album) } %>
-          <span><%= link_to (fa_icon 'trash', class: 'text-danger'), album_photo_path(@album, photo), method: :delete %> </span>
-        </div>
-      </div>
-    <% end %>
+  <div class="photos row pt-3">
+    <%= render user_album_photos, from_album: true %>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_album, only: %i[edit update show destroy]
+  before_action :get_album, only: %i[edit update show destroy user_album_photos]
 
   def index
   end
@@ -48,5 +48,9 @@ class AlbumsController < ApplicationController
   def user_albums
     current_user.albums.order(:id)
   end
-  helper_method :user_albums
+
+  def user_album_photos
+    @album.photos.order(:id)
+  end
+  helper_method :user_albums, :user_album_photos
 end
