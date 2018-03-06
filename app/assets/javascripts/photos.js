@@ -13,7 +13,20 @@ function fancyBoxInitialize() {
     ],
     loop: true,
     clickSlide : false,
-    arrows: true
+    arrows: true,
+    baseTpl :
+        '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+            '<div class="fancybox-bg"></div>' +
+            '<div class="fancybox-inner">' +
+                '<div class="fancybox-infobar">' +
+                    '<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>' +
+                '</div>' +
+                '<div class="fancybox-toolbar">{{buttons}}</div>' +
+                '<div class="fancybox-navigation">{{arrows}}</div>' +
+                '<div class="fancybox-stage"></div>' +
+                '<div class="fancybox-caption-wrap"><div class="fancybox-caption"></div></div>' +
+            '</div>' +
+        '</div>'
   });
 }
 
@@ -24,10 +37,12 @@ $(document).on('click', '.add-photos', function() {
   let progressBar = progress.find('.progress-bar');
   let container = $('.modal-body .container');
   let modalButtons = $('.modal-footer button');
-  let imageCount = files.length
+  let imageCount = files.length;
+  let addButton = $('.add-photos');
   if (imageCount > 0) {
     progress.show();
     container.hide();
+    addButton.hide();
     modalButtons.prop('disabled', true);
     progressBar.css({width: 0});
     Array.from(files).reduce(function(promise, file, index) {
@@ -43,8 +58,10 @@ $(document).on('click', '.add-photos', function() {
         }).then(function() {
           progressBar.css({width: (index + 1) * 100 / imageCount + '%'});
           if (imageCount === (index + 1)) {
-            $('#AddPhotos').modal('hide');
             modalButtons.prop('disabled', false);
+            setTimeout(function() {
+              $('#AddPhotos').modal('hide');
+            }, 2500);
           }
         });
       })
