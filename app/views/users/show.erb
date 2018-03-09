@@ -1,0 +1,4 @@
+User page <%= @user.full_name %><br>
+<% @albums.each do |album| %>
+  <%= link_to album.name, (@user.user_name.present? ? user_album_path(@user.user_name, album) : user_album_path(@user, album)) %><br>
+<% end %>

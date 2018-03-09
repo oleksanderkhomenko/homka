@@ -19,6 +19,10 @@ class User < ApplicationRecord
                         length: { minimum: 5, maximum: 20 },
                         allow_blank: true
 
+  scope :search, -> (q) { where("user_name ILIKE ?", "%#{q}%")
+                            .or(where("first_name ILIKE ?", "%#{q}%"))
+                            .or(where("last_name ILIKE ?", "%#{q}%")) }
+
 
   def full_name
     "#{first_name} #{last_name}"
