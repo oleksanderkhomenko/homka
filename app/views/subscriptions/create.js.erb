@@ -1,0 +1,1 @@
+$('#user-<%= params[:idol] %>').find('.subscription-link').html('<%= link_to "Unfollow", subscription_path(params[:idol]), method: :delete, remote:true %>')

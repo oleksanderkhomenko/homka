@@ -2,6 +2,8 @@ class User < ApplicationRecord
   before_save :normalize_full_name
   has_many :albums, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :idols, :class_name => 'Subscription', :foreign_key => 'follower_id', dependent: :destroy
+  has_many :followers, :class_name => 'Subscription', :foreign_key => 'idol_id', dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :recoverable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -31,5 +33,9 @@ class User < ApplicationRecord
   def normalize_full_name
     self.first_name = first_name.downcase.capitalize
     self.last_name = last_name.downcase.capitalize
+  end
+
+  def idol?(idol_id)
+    self.idols.where(idol_id: idol_id).count > 0
   end
 end

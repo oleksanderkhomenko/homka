@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resource :search, only: [:show]
   get 'user/:username', to: 'users#show', as: 'user'
   get 'user/:username/:album_id', to: 'users#show_album', as: 'user_album'
+  resources :subscriptions, only: [:create, :destroy]
 end

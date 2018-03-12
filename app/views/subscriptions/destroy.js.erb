@@ -1,0 +1,1 @@
+$('#user-<%= params[:id] %>').find('.subscription-link').html('<%= link_to "Follow", subscriptions_path(idol: params[:id]), method: :post, remote:true %>')
