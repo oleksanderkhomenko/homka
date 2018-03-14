@@ -15,7 +15,7 @@
             </div>
           <% end %>
         </div>
-        <% if user.user_name %>
+        <% if user.user_name.present? %>
           <span class="d-block">@<%= user.user_name %></span>
         <% end %>
       </div>

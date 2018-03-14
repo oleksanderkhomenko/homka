@@ -11,10 +11,13 @@
     </div>
 
     <div class="form-group">
-      <%= f.label 'Public' %>
-      <%= f.radio_button :private, :public_album %>
-      <%= f.label 'Private' %>
-      <%= f.radio_button :private, :private_album %>
+      <div class="onoffswitch">
+        <%= f.check_box :private, checked: (@album.private_album? ? true : false), class: 'onoffswitch-checkbox', id: 'myonoffswitch' %>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
     </div>
 
     <div class="actions">

@@ -38,6 +38,7 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
+    params[:album][:private] = params[:album][:private].to_i
     params[:album].permit(:name, :description, :private)
   end
 

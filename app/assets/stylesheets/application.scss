@@ -15,6 +15,8 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "fancybox";
+@import "albums";
+@import "photos";
 
 // header and scrolaable content
 html, body {
@@ -35,39 +37,6 @@ html, body {
 
 .box-shadow {
   box-shadow: 0 0.25rem 0.75rem rgba(82, 130, 19, 0.48);
-}
-
-.album {
-  a {
-    word-break: break-all;
-    text-decoration: none;
-
-    span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  a:hover {
-    i, span {
-      color: #007bff !important;
-    }
-  }
-
-  div:hover {
-    box-shadow: 0 0.25rem 0.75rem rgba(19, 74, 130, 0.48);
-  }
-
-  &:hover {
-    transform: scale(1.05);
-
-    &:after {
-      opacity: 0;
-    }
-  }
-
-  transition: transform 0.3s ease-in-out;
 }
 
 .create-new-album, .add-new-photos {
@@ -94,39 +63,4 @@ html, body {
     }
 }
 
-.photos {
-  margin-left: 0;
-  margin-right: 0;
-}
 
-.photo {
-  position: relative;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-
-  span {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
-  }
-
-  &:hover {
-    span { display: block; }
-    img {
-      transform:scale(1.05);
-      opacity:0.7;
-    }
-  }
-
-  img {
-    box-shadow: 0 0.25rem 0.75rem rgba(68, 68, 68, 0.48);
-  }
-}
-
-.pagination {
-  justify-content: center;
-}

@@ -1,3 +1,79 @@
-// Place all the styles related to the albums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.album {
+  a {
+    word-break: break-all;
+    text-decoration: none;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  a:hover {
+    i, span {
+      color: #007bff !important;
+    }
+  }
+
+  div:hover {
+    box-shadow: 0 0.25rem 0.75rem rgba(19, 74, 130, 0.48);
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  transition: transform 0.3s ease-in-out;
+}
+
+// PUBLIC PRIVATE SWITCH
+.onoffswitch {
+    position: relative; width: 96px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 0.25rem;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 28px; padding: 0; line-height: 28px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "PRIVATE";
+    padding-left: 8px;
+    background-color: #DE2557; color: #374737;
+}
+.onoffswitch-inner:after {
+    content: "PUBLIC";
+    padding-right: 8px;
+    background-color: #55CC31; color: #374737;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 32px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 64px;
+    border: 2px solid #999999; border-radius: 0.25rem;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
