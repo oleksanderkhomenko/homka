@@ -1,4 +1,4 @@
-<div class="container h-100">
+<div class="container-fluid h-100">
   <%= link_to (fa_icon 'plus-circle', class: 'fa-5x text-success add-new-photos'), new_album_photo_path(@album), remote: true, data: { toogle: 'modal', target: '#AddPhotos'} %>
   <div class="album-info d-flex justify-content-around align-items-center bg-secondary">
     <span class="badge badge-info"><%= @album.name %></span>
@@ -21,13 +21,14 @@
   <div class="photos row pt-3">
     <%= render user_album_photos, from_album: true %>
   </div>
+  <%= paginate user_album_photos, class: 'd-flex' %>
 </div>
 
-<div class="modal fade" id="AddPhotos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddPhotos" tabindex="-1" role="dialog" aria-labelledby="addPhotosLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add photos</h5>
+        <h5 class="modal-title" id="addPhotosLabel">Add photos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

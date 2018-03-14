@@ -79,13 +79,13 @@ html, body {
 
 .create-new-album:hover, .add-new-photos:hover {
   color: #007bff !important;
-  -webkit-animation-name: rotate;
+  -webkit-animation-name: rotatePlusButton;
   -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
 
-@-webkit-keyframes rotate {
+@-webkit-keyframes rotatePlusButton {
     from {
         -webkit-transform: rotate(0deg);
     }
@@ -127,6 +127,6 @@ html, body {
   }
 }
 
-.right-0 {
-  right: 0;
+.pagination {
+  justify-content: center;
 }

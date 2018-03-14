@@ -1,5 +1,6 @@
-<div class="container ">
+<div class="container-fluid">
   <div class="photos row pt-3">
     <%= render user_photos, from_album: false %>
   </div>
+  <%= paginate user_photos %>
 </div>

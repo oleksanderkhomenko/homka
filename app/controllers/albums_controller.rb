@@ -27,7 +27,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @photos = @album.photos
+    # @photos = @album.photos
   end
 
   def destroy
@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
   end
 
   def user_album_photos
-    @album.photos.order(:id)
+    @album.photos.order(created_at: :desc).page(params[:page]).per(params[:per])
   end
   helper_method :user_albums, :user_album_photos
 end

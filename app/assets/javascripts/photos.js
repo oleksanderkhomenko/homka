@@ -39,12 +39,18 @@ $(document).on('click', '.add-photos', function() {
   let modalButtons = $('.modal-footer button');
   let imageCount = files.length;
   let addButton = $('.add-photos');
+  let photoTracking = $('.photo-tracking');
+  let photoPreview = $('.photo-preview');
+  let photoCounter = $('.photo-count .count');
+  let photoCurrent = $('.photo-count .current');
   if (imageCount > 0) {
     progress.show();
     container.hide();
     addButton.hide();
     modalButtons.prop('disabled', true);
     progressBar.css({width: 0});
+    photoCounter.html(imageCount);
+    photoCurrent.html('');
     Array.from(files).reduce(function(promise, file, index) {
       let image = new FormData();
       image.append('photo[image]', file);
@@ -57,10 +63,20 @@ $(document).on('click', '.add-photos', function() {
           data: image
         }).then(function() {
           progressBar.css({width: (index + 1) * 100 / imageCount + '%'});
+          photoCurrent.html(index+1);
+
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              photoPreview.attr('src', e.target.result);
+              photoTracking.show();
+          }
+          reader.readAsDataURL(file);
+
           if (imageCount === (index + 1)) {
             modalButtons.prop('disabled', false);
             setTimeout(function() {
               $('#AddPhotos').modal('hide');
+              location.reload();
             }, 2500);
           }
         });

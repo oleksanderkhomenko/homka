@@ -32,7 +32,7 @@ class PhotosController < ApplicationController
   end
 
   def user_photos
-    current_user.photos.order(:id)
+    current_user.photos.order(:id).page(params[:page]).per(params[:per])
   end
   helper_method :user_photos
 end
