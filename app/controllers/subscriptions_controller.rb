@@ -11,4 +11,14 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user.idols.where(idol_id: params[:id]).first
     @subscription.destroy
   end
+
+  def idols
+    subscriptions = current_user.idols
+    @idols = User.where(id: subscriptions.pluck(:idol_id))
+  end
+
+  def followers
+    subscriptions = current_user.followers
+    @followers = User.where(id: subscriptions.pluck(:follower_id))
+  end
 end

@@ -55,12 +55,12 @@
 .onoffswitch-inner:before {
     content: "PRIVATE";
     padding-left: 8px;
-    background-color: #DE2557; color: #374737;
+    background-color: #dc3545; color: #e6d8d8;
 }
 .onoffswitch-inner:after {
     content: "PUBLIC";
     padding-right: 8px;
-    background-color: #55CC31; color: #374737;
+    background-color: #28a745; color: #e6d8d8;
     text-align: right;
 }
 .onoffswitch-switch {
