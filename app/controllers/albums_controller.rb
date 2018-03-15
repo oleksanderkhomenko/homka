@@ -12,10 +12,6 @@ class AlbumsController < ApplicationController
   def create
     @album = current_user.albums.new(album_params)
     @album.save
-    #   redirect_to @album
-    # else
-    #   render :new
-    # end
   end
 
   def edit
@@ -27,7 +23,6 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    # @photos = @album.photos
   end
 
   def destroy
