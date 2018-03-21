@@ -13,7 +13,6 @@ class PhotosController < ApplicationController
     @album = current_user.albums.find(params[:album_id])
     @photo = Photo.new(image: photo_params[:image], user_id: current_user.id, album_id: @album.id)
     @photo.save
-    @photo.reload
   end
 
   def show

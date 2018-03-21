@@ -1,0 +1,7 @@
+<div class="row mt-1">
+  <% @photos.each do |photo| %>
+    <div class="photo">
+      <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: "photo", caption: (render 'photos/caption', photo: photo, from_album: false) } %>
+    </div>
+  <% end %>
+</div>

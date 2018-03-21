@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.where(user_name: params[:username]).first || User.find(params[:username])
     if @user
+      redirect_to root_path if current_user && current_user.id == @user.id
       @albums = @user.albums.public_album
       @photos = @user.photos.where(album_id: @albums.pluck(:id)).page(params[:page])
     end

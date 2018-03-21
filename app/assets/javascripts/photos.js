@@ -12,7 +12,6 @@ function fancyBoxInitialize() {
       'close'
     ],
     loop: true,
-    clickSlide : false,
     arrows: true,
     baseTpl :
         '<div class="fancybox-container" role="dialog" tabindex="-1">' +

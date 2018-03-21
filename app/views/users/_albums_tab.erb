@@ -1,0 +1,12 @@
+<div class="row mt-1">
+  <% @albums.each do |album| %>
+    <div class="album col-md-2">
+      <div class="card mb-2 box-shadow align-items-center">
+        <a href="<%= (@user.user_name.present? ? user_album_path(@user.user_name, album) : user_album_path(@user, album)) %>" class="d-flex flex-column w-100 text-center">
+          <%= fa_icon 'folder-open', class: 'fa-3x text-secondary' %>
+          <span class="text-secondary" title="<%= album.name %>"><%= album.name %></span>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

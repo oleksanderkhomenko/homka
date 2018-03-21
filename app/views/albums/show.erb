@@ -7,8 +7,13 @@
     <% end %>
     <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: 'Public Album') : (fa_icon 'lock', class: 'text-danger fa-2x', title: 'Private Album') %></span>
     <span><%= link_to (fa_icon 'edit', class: 'text-success fa-2x'), edit_album_path(@album) %></span>
-    <span><%= link_to (fa_icon 'trash', class: 'text-danger fa-2x'), album_path(@album), method: :delete %></span>
-  </div>
+    <span class="delete-album-button"><%= link_to (fa_icon 'trash', class: 'text-danger fa-2x'), album_path(@album), method: :delete, onclick: 'showDeleteSpinner();' %></span>
+    <span class="spinner" style="display:none;">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </span>
 
   <% if @album.description.present? %>
     <div class="collapse multi-collapse" id="albumDescription">
