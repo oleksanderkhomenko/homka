@@ -1,0 +1,3 @@
+$('.err-msg').remove();
+$('.content').append('<%= j(render "layouts/alert", error: "Album Updated", class: "success") %>');
+removeAlert();

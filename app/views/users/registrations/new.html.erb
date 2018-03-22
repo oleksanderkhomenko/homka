@@ -1,8 +1,10 @@
+<% if devise_error_messages!.present? %>
+  <%= render 'layouts/alert', error: devise_error_messages!, sign_up: true %>
+<% end %>
 <div class="container w-25 h-100">
   <h2>Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
 
     <div class="form-group">
       <%= f.label :email %>

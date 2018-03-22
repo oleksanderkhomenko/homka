@@ -1,26 +1,30 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_album, only: %i[new create]
+  before_action :get_photo, only: %i[show update destroy]
 
   def index
   end
 
   def new
-    @album = current_user.albums.find(params[:album_id])
     @photo = Photo.new
   end
 
   def create
-    @album = current_user.albums.find(params[:album_id])
     @photo = Photo.new(image: photo_params[:image], user_id: current_user.id, album_id: @album.id)
     @photo.save
   end
 
   def show
-    @photo = current_user.photos.find(params[:id])
+  end
+
+  def update
+    @photo.name = photo_params[:name]
+    @photo.description = photo_params[:description]
+    @photo.save if @photo.changed?
   end
 
   def destroy
-    @photo = current_user.photos.find(params[:id])
     @photo.destroy
   end
 
@@ -28,6 +32,14 @@ class PhotosController < ApplicationController
 
   def photo_params
     params[:photo].permit(:name, :description, :image)
+  end
+
+  def get_album
+    @album ||= current_user.albums.find(params[:album_id])
+  end
+
+  def get_photo
+    @photo ||= current_user.photos.find(params[:id])
   end
 
   def user_photos

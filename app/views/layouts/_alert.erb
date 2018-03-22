@@ -1,0 +1,6 @@
+<div class="err-msg <%= local_assigns[:sign_up] ? 'position-relative' : '' %> alert alert-<%= local_assigns[:class] ? local_assigns[:class] : 'danger' %> alert-dismissible" role="alert">
+  <%= error %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

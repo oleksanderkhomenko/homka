@@ -18,8 +18,10 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @album.update(album_params)
-    redirect_to @album
+    @album.name = album_params[:name]
+    @album.description = album_params[:description]
+    @album.private = album_params[:private]
+    @album.save if @album.changed?
   end
 
   def show

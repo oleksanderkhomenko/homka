@@ -1,1 +1,33 @@
-<%= image_tag(@photo.image_url.to_s) %>
+<% if params[:album_id]%>
+  <div class="d-flex align-items-center p-3 my-3 rounded box-shadow bg-light">
+      <h6 class="mb-0 mr-1"><%= link_to (fa_icon 'arrow-circle-left', class: 'text-primary fa-2x', title: 'Back to album'), album_path(params[:album_id], page: params[:page]) %></h6>
+  </div>
+<% else %>
+  <div class="d-flex align-items-center p-3 my-3 rounded box-shadow bg-light">
+      <h6 class="mb-0 mr-1"><%= link_to (fa_icon 'arrow-circle-left', class: 'text-primary fa-2x', title: 'Back to album'), photos_path(page: params[:page]) %></h6>
+  </div>
+<% end %>
+
+<div class="container mt-2">
+  <%= form_with scope: :photo, url: @photo, method: :patch, remote: true do |f| %>
+    <div class="d-flex align-items-center justify-content-between">
+      <%= image_tag(@photo.image_url(:thumb_400).to_s, class: 'box-shadow') %>
+
+      <div class="flex-column w-50">
+        <div class="form-group rounded box-shadow bg-light text-center">
+          <%= f.label :name %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+        </div>
+
+        <div class="form-group rounded box-shadow bg-light text-center">
+          <%= f.label :description %>
+          <%= f.text_area :description, autocomplete: "description", class: 'form-control' %>
+        </div>
+
+        <div class="actions w-25">
+          <%= f.submit "Update", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -2,7 +2,7 @@
   <%= form_with scope: :photo, url: album_photos_path(@album) do |f| %>
     <div class="form-group">
       <%= f.label :image %>
-      <%= f.file_field :image, multiple: true %>
+      <%= f.file_field :image, multiple: true, accept: "image/*" %>
     </div>
   <% end %>
 </div>

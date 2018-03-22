@@ -3,9 +3,9 @@
   <p>Description: <span><%= photo.description ? photo.description : 'no description' %></span></p>
   <% if current_user && current_user.id == photo.user.id %>
     <% if from_album %>
-      <p><%= link_to 'edit', album_photo_path(album, photo) %></p>
+      <p><%= link_to 'edit', album_photo_path(album, photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
     <% else %>
-      <p><%= link_to 'edit', photo_path(photo), onclick: '$.fancybox.close( true );' %></p>
+      <p><%= link_to 'edit', photo_path(photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
     <% end %>
   <% end %>
 </div>

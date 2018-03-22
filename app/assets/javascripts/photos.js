@@ -1,9 +1,20 @@
 $(function() {
   fancyBoxInitialize();
+  removeAlert();
   document.addEventListener("turbolinks:load", function() {
     fancyBoxInitialize();
+    removeAlert();
   })
 });
+
+function removeAlert() {
+  let errMsg = $('.err-msg');
+  if(!errMsg.hasClass('position-relative')) {
+    errMsg.fadeTo(2000, 500).slideUp(500, function(){
+      errMsg.remove();
+    });
+  }
+}
 
 function fancyBoxInitialize() {
   $('[data-fancybox]').fancybox({
@@ -76,7 +87,7 @@ $(document).on('click', '.add-photos', function() {
             setTimeout(function() {
               $('#AddPhotos').modal('hide');
               location.reload();
-            }, 2500);
+            }, 2000);
           }
         });
       })
