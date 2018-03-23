@@ -10,13 +10,18 @@
 
   Feed = {
     create: function(data) {
-      console.log(data)
+      $('.feed').prepend(data['feed']);
     },
     update: function(data) {
-
+      $('#feed-'+data['feed_id']).replaceWith(data['feed']);
     },
     destroy: function(data) {
-
+      console.log(data)
+      if(data['delete_feed']) {
+        $('#feed-'+data['feed_id']).remove();
+      } else {
+        $('#feed-'+data['feed_id']).replaceWith(data['feed']);
+      }
     }
   };
 

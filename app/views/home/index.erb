@@ -2,9 +2,11 @@
   <div class="container">
     <div class="my-3 p-3 bg-white rounded box-shadow">
       <h6 class="border-bottom border-gray pb-2 mb-0">Updates:</h6>
-      <% @feed.each do |value| %>
-        <%= render 'feeds/feed', value: value %>
-      <% end %>
+      <div class="feed">
+        <% @feed.each do |value| %>
+          <%= render 'feeds/feed', value: value %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
