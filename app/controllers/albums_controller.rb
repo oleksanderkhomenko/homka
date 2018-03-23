@@ -10,8 +10,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = current_user.albums.new(album_params)
-    @album.save
+    @album = current_user.albums.create(album_params)
   end
 
   def edit
@@ -21,7 +20,7 @@ class AlbumsController < ApplicationController
     @album.name = album_params[:name]
     @album.description = album_params[:description]
     @album.private = album_params[:private]
-    @album.save if @album.changed?
+    @album.save! if @album.changed?
   end
 
   def show

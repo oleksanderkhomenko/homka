@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :subscriptions, only: [:create, :destroy]
   get 'idols', to: 'subscriptions#idols', as: 'idols'
   get 'followers', to: 'subscriptions#followers'
+  resource :feeds, only: [:create, :update, :destroy]
 end

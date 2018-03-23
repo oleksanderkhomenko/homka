@@ -15,7 +15,7 @@
       </div>
       <div class="content">
         <% if notice %>
-          <%= render 'layouts/alert', error: notice %>
+          <%= render 'layouts/alert', error: notice, class: 'warning' %>
         <% end %>
         <% if alert %>
           <%= render 'layouts/alert', error: alert %>

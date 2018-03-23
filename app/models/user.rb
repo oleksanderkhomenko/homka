@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_save :normalize_full_name
   has_many :albums, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :feeds, dependent: :destroy
   has_many :idols, :class_name => 'Subscription', :foreign_key => 'follower_id', dependent: :destroy
   has_many :followers, :class_name => 'Subscription', :foreign_key => 'idol_id', dependent: :destroy
   # Include default devise modules. Others available are:

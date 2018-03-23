@@ -4,8 +4,13 @@ class HomeController < ApplicationController
       subscriptions = current_user.idols
       idols = User.where(id: subscriptions.pluck(:idol_id))
       albums = Album.where(user_id: idols.pluck(:id)).public_album
-      photos = Photo.where(album_id: albums.pluck(:id)).order(created_at: :desc)
-      @feed = photos.group_by { |p| [p.created_at.to_time.strftime('%B %e at %l:%M %p'), p.album_id] }
+      feeds = Feed.where(user_id: idols, album_id: albums).order(updated_at: :desc)
+      @feed = feeds.map do |feed|
+        album = albums.find(feed.album_id)
+        photos = Photo.where(id: feed.photo_ids)
+        user = idols.find(feed.user_id)
+        {album: album, photos: photos, user: user, feed: feed}
+      end
     end
   end
 end
