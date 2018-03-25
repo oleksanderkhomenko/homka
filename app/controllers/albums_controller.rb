@@ -27,6 +27,13 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
+    feed = @album.feeds.pluck(:id)
+    ActionCable.server.broadcast(
+      "feed_#{current_user.id}",
+      action: :destroy,
+      feed_ids: feed,
+      delete_feed: true
+    )
     @album.destroy
     redirect_to albums_path
   end

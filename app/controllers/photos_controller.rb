@@ -15,26 +15,33 @@ class PhotosController < ApplicationController
     if @photo.save
       @feed = current_user.feeds.where(album_id: @album.id, updated_at: 30.seconds.ago..Time.current).first
       if @feed
-        @feed.photo_ids.push(@photo.id)
-        @feed.save!
-        photos = Photo.where(id: @feed.photo_ids)
-        val = { album: @photo.album, photos: photos, user: current_user, feed: @feed }
-        ActionCable.server.broadcast(
-          "feed_#{current_user.id}",
-          action: :update,
-          feed_id: @feed.id,
-          feed: render(partial: 'feeds/feed', locals: { value: val })
-        )
+        update_feed(@feed, @photo.reload)
       else
-        @feed = current_user.feeds.create(album_id: @album.id, photo_ids: [@photo.id])
-        val = { album: @photo.reload.album, photos: [@photo], user: current_user, feed: @feed }
-        ActionCable.server.broadcast(
-          "feed_#{current_user.id}",
-          action: :create,
-          feed: render(partial: 'feeds/feed', locals: { value: val })
-        )
+        create_new_feed(@album, @photo.reload)
       end
     end
+  end
+
+  def create_new_feed(album, photo)
+    @feed = current_user.feeds.create(album_id: album.id, photo_ids: [photo.id])
+    val = { album: album, photos: [photo], user: current_user, feed: @feed }
+    ActionCable.server.broadcast(
+      "feed_#{current_user.id}",
+      action: :create,
+      feed: render(partial: 'feeds/feed', locals: { value: val })
+    )
+  end
+
+  def update_feed(feed, photo)
+    feed.photo_ids.push(photo.id)
+    feed.save!
+    ActionCable.server.broadcast(
+      "feed_#{current_user.id}",
+      action: :update,
+      feed_id: feed.id,
+      photos_count: feed.photo_ids.count,
+      photo: render(partial: 'photos/share_photo', locals: { photo: photo })
+    )
   end
 
   def show
@@ -51,25 +58,33 @@ class PhotosController < ApplicationController
     if feed
       feed.photo_ids.delete(@photo.id)
       feed.save!
-      feed_id = feed.id
-      album = @photo.album
-      delete_feed = false
       if feed.photo_ids.count.zero?
-        feed.destroy
-        delete_feed = true
+        delete_feed(feed)
+      else
+        delete_from_feed(feed.id, @photo.id)
       end
     end
     @photo.destroy
-    photos = Photo.where(id: feed.photo_ids)
-    val = { album: album, photos: photos, user: current_user, feed: feed }
-    render :destroy
+  end
+
+  def delete_from_feed(feed_id, photo_id)
     ActionCable.server.broadcast(
       "feed_#{current_user.id}",
       action: :destroy,
       feed_id: feed_id,
-      delete_feed: delete_feed,
-      feed: render_to_string(partial: 'feeds/feed', locals: { value: val })
+      photo_id: params[:id]
     )
+  end
+
+  def delete_feed(feed)
+    ActionCable.server.broadcast(
+      "feed_#{current_user.id}",
+      action: :destroy,
+      feed_id: feed.id,
+      delete_feed: true,
+      photo_id: params[:id]
+    )
+    feed.destroy
   end
 
   private

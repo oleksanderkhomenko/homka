@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       feeds = Feed.where(user_id: idols, album_id: albums).order(updated_at: :desc)
       @feed = feeds.map do |feed|
         album = albums.find(feed.album_id)
-        photos = Photo.where(id: feed.photo_ids)
+        photos = Photo.where(id: feed.photo_ids).order(created_at: :desc)
         user = idols.find(feed.user_id)
         {album: album, photos: photos, user: user, feed: feed}
       end
