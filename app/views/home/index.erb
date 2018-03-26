@@ -2,7 +2,7 @@
   <div class="container">
     <div class="my-3 p-3 bg-white rounded box-shadow">
       <h6 class="border-bottom border-gray pb-2 mb-0">Updates:</h6>
-      <%= link_to @feeds.next_page, root_path(page: @feeds.next_page), remote: true if @feeds.next_page %>
+      <%= link_to @feeds.next_page, root_path(page: @feeds.next_page), remote: true, hidden: true, class: 'next-page-link' if @feeds.next_page %>
       <div class="feed">
         <% @feed.each do |value| %>
           <%= render 'feeds/feed', value: value %>

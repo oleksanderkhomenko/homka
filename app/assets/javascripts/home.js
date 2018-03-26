@@ -1,6 +1,8 @@
 function fScroll() {
   if(($('.content').scrollTop()+$('.content').height()) === $('.content').prop('scrollHeight')) {
-    // Rails.fire($('.loading-more form').get(0), 'submit');
-    console.log('bikini bottom');
+    let link = $('.next-page-link');
+    if (link.length > 0) {
+      $(link).get(0).click();
+    }
   }
 }

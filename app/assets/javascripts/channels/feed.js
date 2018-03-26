@@ -1,3 +1,4 @@
+var feedSubscription = undefined;
 $(function() {
   if(location.pathname === '/') {
     createSubscription();
@@ -5,13 +6,16 @@ $(function() {
   $(document).on('turbolinks:load', function() {
     if(location.pathname === '/' && App.cable.subscriptions.subscriptions.length < 1) {
       createSubscription();
-    } else {
+    } else if (location.pathname !== '/') {
       unsubscribe();
     }
   })
 });
 
 function createSubscription () {
+  if (feedSubscription) {
+    return;
+  }
   feedSubscription = App.cable.subscriptions.create("FeedChannel", {
     connected: function() {
       console.log('connected');
@@ -40,6 +44,8 @@ function createSubscription () {
       } else if (data['delete_feed']) {
         $('#feed-'+data['feed_id']).remove();
       } else {
+        var photoCount = $('#feed-'+data['feed_id']+' .photos-count');
+        photoCount.html(photoCount.html()-1);
         $('#photo-'+data['photo_id']).remove();
       }
     }
@@ -49,5 +55,6 @@ function createSubscription () {
 function unsubscribe () {
   if(App.cable.subscriptions.subscriptions.length > 0) {
       feedSubscription.unsubscribe();
+      feedSubscription = undefined;
     }
 }
