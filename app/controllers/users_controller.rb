@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     @photos = @album.photos.page(params[:page])
   end
 
+  def change_locale
+    cookies[:locale] = params[:locale]
+    redirect_to :root
+  end
+
   private
 
   def get_user

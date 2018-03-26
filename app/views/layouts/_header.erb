@@ -19,6 +19,15 @@
           <%= render 'layouts/search_form' %>
         </li>
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Language
+          </a>
+          <div class="dropdown-menu" aria-labelledby="languageDropdownMenuLink">
+            <%= link_to 'EN', change_locale_path(:en), method: :patch, class: "dropdown-item" %>
+            <%= link_to 'UA', change_locale_path(:uk), method: :patch, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Logged as <%= current_user.full_name %>
           </a>
@@ -36,6 +45,15 @@
         </li>
         <li class="nav-item mx-auto">
           <%= render 'layouts/search_form' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Language
+          </a>
+          <div class="dropdown-menu" aria-labelledby="languageDropdownMenuLink">
+            <%= link_to 'EN', change_locale_path(:en), method: :patch, class: "dropdown-item" %>
+            <%= link_to 'UA', change_locale_path(:uk), method: :patch, class: 'dropdown-item' %>
+          </div>
         </li>
       <% end %>
     </ul>

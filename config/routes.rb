@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'idols', to: 'subscriptions#idols', as: 'idols'
   get 'followers', to: 'subscriptions#followers'
   resource :feeds, only: [:create, :update, :destroy]
+  patch 'locale/:locale', to: 'users#change_locale', as: 'change_locale'
 end
