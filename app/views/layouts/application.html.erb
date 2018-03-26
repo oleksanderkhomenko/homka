@@ -13,7 +13,7 @@
       <div class="header">
         <%= render 'layouts/header'  %>
       </div>
-      <div class="content">
+      <div class="content"  <%= current_page?(root_path) ? 'onscroll=fScroll();' : '' %> >
         <% if notice %>
           <%= render 'layouts/alert', error: notice, class: 'warning' %>
         <% end %>
