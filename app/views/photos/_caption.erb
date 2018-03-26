@@ -1,7 +1,7 @@
 <div>
   <p>Name: <span><%= photo.name ? photo.name : 'no name' %></span></p>
   <p>Description: <span><%= photo.description ? photo.description : 'no description' %></span></p>
-  <% if current_user && current_user.id == photo.user.id %>
+  <% if current_user && (current_user.id == photo.user.id) && !local_assigns[:alien] %>
     <% if from_album %>
       <p><%= link_to 'edit', album_photo_path(album, photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
     <% else %>

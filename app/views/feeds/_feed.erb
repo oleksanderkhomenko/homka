@@ -4,8 +4,8 @@
       <strong><%= value[:user].user_name.present? ? "#{value[:user].full_name} (#{value[:user].user_name})" : value[:user].full_name %> added <span class="photos-count"><%= value[:photos].count %></span> photos to album <%= value[:album].name %></strong>
       <div class="row">
         <% value[:photos].each do |photo| %>
-          <div id="photo-<%= photo.id %>">
-            <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: value[:feed].id, caption: (render 'photos/caption', photo: photo, from_album: false) } %>
+          <div class="photo" id="photo-<%= photo.id %>">
+            <%= link_to image_tag(photo.image_url(:thumb_150).to_s), photo.image_url.to_s, data: { fancybox: value[:feed].id, caption: (render 'photos/caption', photo: photo, from_album: false, alien: true) } %>
           </div>
         <% end %>
       </div>

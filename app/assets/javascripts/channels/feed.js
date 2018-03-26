@@ -31,10 +31,12 @@ function createSubscription () {
   Feed = {
     create: function(data) {
       $('.feed').prepend(data['feed']);
+      fancyBoxInitialize();
     },
     update: function(data) {
       $('#feed-'+data['feed_id']+' .photos-count').html(data['photos_count'])
       $('#feed-'+data['feed_id']+' .row').prepend(data['photo']);
+      fancyBoxInitialize();
     },
     destroy: function(data) {
       if(data['delete_feed'] && data['feed_ids']) {

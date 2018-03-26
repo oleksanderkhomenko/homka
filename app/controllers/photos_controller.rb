@@ -40,7 +40,7 @@ class PhotosController < ApplicationController
       action: :update,
       feed_id: feed.id,
       photos_count: feed.photo_ids.count,
-      photo: render(partial: 'photos/share_photo', locals: { photo: photo })
+      photo: render(partial: 'photos/share_photo', locals: { photo: photo, feed_id: feed.id })
     )
   end
 
