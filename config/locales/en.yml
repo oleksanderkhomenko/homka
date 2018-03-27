@@ -23,3 +23,4 @@ en:
   update: Update
   password_min: '%{count} characters minimum'
   registration: Registration
+  logged_as: Logged as %{user}

@@ -6,5 +6,10 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:ff7de4fda52a14ca7f1be3169fae283c@jack.redistogo.com:11736/
+  host: jack.redistogo.com
+  port: 11736
   channel_prefix: homka_production
+  password: ff7de4fda52a14ca7f1be3169fae283c
+  inline: true
+  timeout: 1

@@ -42,4 +42,5 @@ uk:
         first_name: Ім'я
         last_name: Прізвище
         user_name: Username
+  logged_as: Залогінений як %{user}
 
