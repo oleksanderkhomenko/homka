@@ -2,8 +2,8 @@
 
 
   <div class="d-flex align-items-center p-3 my-3 rounded box-shadow bg-light">
-      <h6 class="mb-0 mr-1"><%= link_to (fa_icon 'arrow-circle-left', class: 'text-primary fa-2x', title: 'Back to album'), album_path(@album) %></h6>
-      <h6 class="mb-0 text-primary">Edit <%= @album.name %></h6>
+      <h6 class="mb-0 mr-1"><%= link_to (fa_icon 'arrow-circle-left', class: 'text-primary fa-2x', title: I18n.t('.back_to_album')), album_path(@album) %></h6>
+      <h6 class="mb-0 text-primary"><%= I18n.t('.edit') %> <%= @album.name %></h6>
   </div>
 
 
@@ -11,7 +11,7 @@
     <div class="d-flex flex-column align-items-center">
       <div class="d-flex w-75 justify-content-between">
         <div class="form-group rounded box-shadow w-50 bg-light text-center">
-          <%= f.label :name %>
+          <%= f.label I18n.t('.name') %>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
         </div>
 
@@ -28,12 +28,12 @@
 
       <div class="d-flex w-75 justify-content-between">
         <div class="form-group rounded box-shadow w-50 bg-light text-center">
-          <%= f.label :description %>
+          <%= f.label I18n.t('.description') %>
           <%= f.text_area :description, autocomplete: "description", class: 'form-control' %>
         </div>
 
         <div class="actions w-25">
-          <%= f.submit "Update", class: 'btn btn-primary' %>
+          <%= f.submit I18n.t('.update'), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

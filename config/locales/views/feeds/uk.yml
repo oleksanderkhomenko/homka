@@ -1,0 +1,14 @@
+uk:
+  name: Ім'я
+  description: Опис
+  create: Створити
+  edit: Редагувати
+  update: Оновити
+  add: Додати
+  close: Закрити
+  create_new_album: Створити новий альбом
+  public_album: Публічний Альбом
+  private_album: Приватний Альбом
+  back_to_album: Назад до альбому
+  add_photos: Додати фото
+  album_updated: Альбом Оновлено

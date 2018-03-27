@@ -3,9 +3,9 @@
   <div class="album-info d-flex justify-content-around align-items-center bg-secondary">
     <span class="badge badge-info"><%= @album.name %></span>
     <% if @album.description.present? %>
-      <span class="btn badge badge-info" data-toggle="collapse" href="#albumDescription" role="button" aria-expanded="false" aria-controls="albumDescription">Description</span>
+      <span class="btn badge badge-info" data-toggle="collapse" href="#albumDescription" role="button" aria-expanded="false" aria-controls="albumDescription"><%= I18n.t('.description') %></span>
     <% end %>
-    <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: 'Public Album') : (fa_icon 'lock', class: 'text-danger fa-2x', title: 'Private Album') %></span>
+    <span><%= @album.public_album? ? (fa_icon 'unlock', class: 'text-success fa-2x', title: I18n.t('.public_album')) : (fa_icon 'lock', class: 'text-danger fa-2x', title: I18n.t('.private_album')) %></span>
     <span><%= link_to (fa_icon 'edit', class: 'text-success fa-2x'), edit_album_path(@album) %></span>
     <span class="delete-album-button"><%= link_to (fa_icon 'trash', class: 'text-danger fa-2x'), album_path(@album), method: :delete, onclick: 'showDeleteSpinner();' %></span>
     <span class="spinner" style="display:none;">
@@ -33,7 +33,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addPhotosLabel">Add photos</h5>
+        <h5 class="modal-title" id="addPhotosLabel"><%= I18n.t('.add_photos') %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -41,8 +41,8 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary add-photos">Add</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= I18n.t('.close') %></button>
+        <button type="button" class="btn btn-primary add-photos"><%= I18n.t('.add') %></button>
       </div>
     </div>
   </div>

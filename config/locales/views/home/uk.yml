@@ -1,0 +1,3 @@
+uk:
+  updates: Оновлення
+  feed_text: "%{user} додав <span class=\"photos-count\">%{count}</span> фото до альбому %{album}"

@@ -1,11 +1,11 @@
 <div>
-  <p>Name: <span><%= photo.name ? photo.name : 'no name' %></span></p>
-  <p>Description: <span><%= photo.description ? photo.description : 'no description' %></span></p>
+  <p><%= I18n.t('.name') %>: <span><%= photo.name ? photo.name : I18n.t('.no_name') %></span></p>
+  <p><%= I18n.t('.description') %>: <span><%= photo.description ? photo.description : I18n.t('.no_description') %></span></p>
   <% if current_user && (current_user.id == photo.user.id) && !local_assigns[:alien] %>
     <% if from_album %>
-      <p><%= link_to 'edit', album_photo_path(album, photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
+      <p><%= link_to I18n.t('.edit'), album_photo_path(album, photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
     <% else %>
-      <p><%= link_to 'edit', photo_path(photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
+      <p><%= link_to I18n.t('.edit'), photo_path(photo, page: params[:page]), onclick: '$.fancybox.close( true );' %></p>
     <% end %>
   <% end %>
 </div>

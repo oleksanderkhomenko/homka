@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to 'back to user', (@user.user_name.present? ? user_path(@user.user_name) : user_path(@user.id)) %>
+  <%= link_to I18n.t('.back_to_user'), (@user.user_name.present? ? user_path(@user.user_name) : user_path(@user.id)) %>
   <div class="row">
     <% @photos.each do |photo| %>
       <div class="photo">

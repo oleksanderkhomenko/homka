@@ -3,10 +3,10 @@
 
   <ul class="nav nav-tabs" id="user-<%= @user.id %>" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" id="albums-tab" data-toggle="tab" href="#albums" role="tab" aria-controls="albums" aria-selected="true">Albums</a>
+      <a class="nav-link" id="albums-tab" data-toggle="tab" href="#albums" role="tab" aria-controls="albums" aria-selected="true"><%= I18n.t('.albums') %></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="photos-tab" data-toggle="tab" href="#photos" role="tab" aria-controls="photos" aria-selected="false">Photos</a>
+      <a class="nav-link" id="photos-tab" data-toggle="tab" href="#photos" role="tab" aria-controls="photos" aria-selected="false"><%= I18n.t('.photos') %></a>
     </li>
   </ul>
   <div class="tab-content" id="user-<%= @user.id %>-content">

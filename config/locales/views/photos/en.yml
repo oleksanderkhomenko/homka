@@ -1,0 +1,11 @@
+en:
+  name: Name
+  no_name: no name
+  description: Description
+  no_description: no description
+  edit: Edit
+  update: Update
+  image: Image
+  back_to_album: Back to album
+  back_to_photos: Back to photos
+  photo_updated: Photo Updated

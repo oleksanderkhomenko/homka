@@ -12,7 +12,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="createAlbumLabel">Create new album</h5>
+        <h5 class="modal-title" id="createAlbumLabel"><%= I18n.t('.create_new_album') %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,8 +20,8 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary save-album">Create</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= I18n.t('.close') %></button>
+        <button type="button" class="btn btn-primary save-album"><%= I18n.t('.create') %></button>
       </div>
     </div>
   </div>

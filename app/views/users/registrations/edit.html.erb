@@ -1,11 +1,12 @@
+<% if devise_error_messages!.present? %>
+  <%= render 'layouts/alert', error: devise_error_messages!, sign_up: true %>
+<% end %>
 <div class="container w-25 h-100">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2><%= I18n.t('.edit_user') %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
-
     <div class="form-group">
-      <%= f.label :email %>
+      <%= f.label I18n.t('.email') %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
     </div>
 
@@ -14,35 +15,35 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :first_name %>
+      <%= f.label I18n.t('.first_name') %>
       <%= f.text_field :first_name, autocomplete: "first_name", class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :last_name %>
+      <%= f.label I18n.t('.last_name') %>
       <%= f.text_field :last_name, autocomplete: "last_name", class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :user_name %>
+      <%= f.label I18n.t('.user_name') %>
       <%= f.text_field :user_name, autocomplete: "user_name", class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.label I18n.t('.password') %> <i><%= I18n.t('.password_not_change') %></i>
       <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
       <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <em><%= I18n.t('.password_min', count: @minimum_password_length) %></em>
       <% end %>
     </div>
 
     <div class="form-group">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.label I18n.t('.current_password') %> <i><%= I18n.t('.password_confirm') %></i>
       <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Update", class: 'btn btn-primary' %>
+      <%= f.submit I18n.t('.update'), class: 'btn btn-primary' %>
     </div>
   <% end %>
 

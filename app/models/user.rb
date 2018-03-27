@@ -11,14 +11,13 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable
 
   validates :first_name, presence: true,
-                        format: { with: /\A[a-zA-Z]+\z/, message: "should include letters only"},
+                        format: { with: /\A[a-zA-Z]+\z/},
                         length: { maximum: 15 }
   validates :last_name, presence: true,
-                        format: { with: /\A[a-zA-Z]+\z/, message: "should include letters only"},
+                        format: { with: /\A[a-zA-Z]+\z/},
                         length: { maximum: 15 }
   validates :user_name, uniqueness: true,
-                        format: { with: /\A[a-z0-9](?=.*[a-z])(?:[a-z0-9\-\_])*[a-z0-9]\z/,
-                                  message: "can include small letters, numbers, -, _ , start and end with letter or number and have at least 1 letter"},
+                        format: { with: /\A[a-z0-9](?=.*[a-z])(?:[a-z0-9\-\_])*[a-z0-9]\z/},
                         length: { minimum: 5, maximum: 20 },
                         allow_blank: true
 

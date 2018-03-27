@@ -1,0 +1,14 @@
+en:
+  name: Name
+  description: Description
+  create: Create
+  edit: Edit
+  update: Update
+  add: Add
+  close: Close
+  create_new_album: Create new album
+  public_album: Public Album
+  private_album: Private Album
+  back_to_album: Back to album
+  add_photos: Add photos
+  album_updated: Album Updated

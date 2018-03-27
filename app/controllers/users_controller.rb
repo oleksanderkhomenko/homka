@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def change_locale
     cookies[:locale] = params[:locale]
-    redirect_to :root
   end
 
   private

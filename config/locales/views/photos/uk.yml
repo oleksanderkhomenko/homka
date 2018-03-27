@@ -1,0 +1,11 @@
+uk:
+  name: Ім'я
+  no_name: немає імені
+  description: Опис
+  no_description: немає опису
+  edit: Редагувати
+  update: Оновити
+  image: Зображення
+  back_to_album: Назад до альбому
+  back_to_photos: Назад до фотографій
+  photo_updated: Фото оновлено

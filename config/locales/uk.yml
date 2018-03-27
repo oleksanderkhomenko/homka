@@ -1,0 +1,37 @@
+uk:
+  home: Домашня
+  albums: Альбоми
+  photos: Фотографії
+  subscriptions: Підписки
+  followers: Підписники
+  language: Мова
+  profile: Профіль
+  log_out: Вийти
+  log_in: Зайти
+  sign_up: Зареєструватись
+  search: Пошук
+  search_people: Пошук людей
+  edit_user: Редагувати Користувача
+  email: Пошта
+  first_name: Ім'я
+  last_name: Прізвище
+  user_name: Username
+  password: Пароль
+  current_password: Поточний пароль
+  password_not_change: (залиште пустим якщо ви не хочете змінювати його)
+  password_confirm: (нам необхідний ваш поточний пароль для підтвердження ваших змін)
+  update: Оновити
+  password_min: '%{count} символів мінімум'
+  registration: Реєстрація
+  activerecord:
+    models:
+      user: Користувач
+    attributes:
+      user:
+        current_password: Поточний пароль
+        email: Пошта
+        password: Пароль
+        first_name: Ім'я
+        last_name: Прізвище
+        user_name: Username
+

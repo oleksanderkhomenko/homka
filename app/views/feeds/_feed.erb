@@ -1,7 +1,10 @@
 <div class="media text-muted pt-3" id="feed-<%= value[:feed].id %>">
   <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
     <div class="w-100">
-      <strong><%= value[:user].user_name.present? ? "#{value[:user].full_name} (#{value[:user].user_name})" : value[:user].full_name %> added <span class="photos-count"><%= value[:photos].count %></span> photos to album <%= value[:album].name %></strong>
+      <strong><%= I18n.t('.feed_text',
+                          user: (value[:user].user_name.present? ? "#{value[:user].full_name} (#{value[:user].user_name})" : value[:user].full_name),
+                          count: value[:photos].count,
+                          album: value[:album].name).html_safe %></strong>
       <div class="row">
         <% value[:photos].each do |photo| %>
           <div class="photo" id="photo-<%= photo.id %>">
