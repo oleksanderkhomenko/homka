@@ -11,6 +11,9 @@ class AlbumsController < ApplicationController
 
   def create
     @album = current_user.albums.create(album_params)
+    if @album.errors.any?
+      @errors = @album.errors.full_messages
+    end
   end
 
   def edit

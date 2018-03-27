@@ -1,5 +1,11 @@
-$('#createAlbum').modal('hide')
 $('#createAlbum').on('hidden.bs.modal', function () {
   $('.modal-body').html("")
-})
-$('.albums').append("<%= j(render 'album', album: @album) %>")
+});
+<% if @errors %>
+  $('.modal-footer button').prop('disabled', false);
+  $('#createAlbum .modal-body').append("<%= j(render 'layouts/alert', error: @errors.join(', '), pos_rel: true) %>");
+  removeAlert(true);
+<% else %>
+  $('#createAlbum').modal('hide')
+  $('.albums').append("<%= j(render 'album', album: @album) %>")
+<% end %>

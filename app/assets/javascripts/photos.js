@@ -7,9 +7,9 @@ $(function() {
   })
 });
 
-function removeAlert() {
+function removeAlert(forceRemove) {
   let errMsg = $('.err-msg');
-  if(!errMsg.hasClass('position-relative')) {
+  if(!errMsg.hasClass('position-relative') || forceRemove) {
     errMsg.fadeTo(2000, 500).slideUp(500, function(){
       errMsg.remove();
     });

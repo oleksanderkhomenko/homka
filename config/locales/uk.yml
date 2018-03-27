@@ -24,9 +24,17 @@ uk:
   password_min: '%{count} символів мінімум'
   registration: Реєстрація
   activerecord:
+    errors:
+      models:
+        album:
+          attributes:
+            name:
+              blank: не може бути пустим
     models:
       user: Користувач
     attributes:
+      album:
+        name: Ім'я
       user:
         current_password: Поточний пароль
         email: Пошта
