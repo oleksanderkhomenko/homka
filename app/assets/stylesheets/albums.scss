@@ -1,4 +1,13 @@
+.albums {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .album {
+  width: 180px;
+  padding-right: 10px;
+  padding-left: 10px;
+
   a {
     word-break: break-all;
     text-decoration: none;
