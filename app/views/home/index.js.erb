@@ -3,3 +3,4 @@
 <% end %>
 $('.feed').append('<%= j(render "feeds") %>');
 $('.next-page-link').replaceWith('<%= link_to @feeds.next_page, root_path(page: @feeds.next_page), remote: true, hidden: true, class: "next-page-link" if @feeds.next_page %>');
+fancyBoxInitialize();
