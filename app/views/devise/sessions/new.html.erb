@@ -1,6 +1,6 @@
 <div class="container h-100">
   <div class="form-wrapper form-70-500">
-    <h2>Log in</h2>
+    <h2><%= I18n.t('.log_in') %></h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
@@ -21,7 +21,7 @@
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in", class: 'btn btn-primary' %>
+        <%= f.submit I18n.t('.log_in'), class: 'btn btn-primary' %>
       </div>
     <% end %>
     <% if false %><%= render "devise/shared/links" %><% end %>
