@@ -10,10 +10,10 @@
 
 <div class="container mt-2">
   <%= form_with scope: :photo, url: @photo, method: :patch, remote: true do |f| %>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="photo-edit d-flex align-items-center justify-content-around">
       <%= image_tag(@photo.image_url(:thumb_400).to_s, class: 'box-shadow') %>
 
-      <div class="flex-column w-50">
+      <div class="photo-edit-inputs flex-column">
         <div class="form-group rounded box-shadow bg-light text-center">
           <%= f.label I18n.t('.name') %>
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>

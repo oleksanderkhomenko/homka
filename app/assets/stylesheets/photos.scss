@@ -34,3 +34,18 @@
 .pagination {
   justify-content: center;
 }
+
+.photo-edit-inputs {
+  width: 80%;
+  max-width: 500px;
+}
+
+@media only screen and (max-width: 800px) {
+  .photo-edit {
+    flex-direction: column;
+  }
+
+  .photo-edit-inputs {
+    margin-top: 1rem;
+  }
+}

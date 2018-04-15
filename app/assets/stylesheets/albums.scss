@@ -40,6 +40,13 @@
   transition: transform 0.3s ease-in-out;
 }
 
+@media only screen and (max-width: 800px) {
+  .album-edit-inputs {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+}
+
 // PUBLIC PRIVATE SWITCH
 .onoffswitch {
     position: relative; width: 96px;
